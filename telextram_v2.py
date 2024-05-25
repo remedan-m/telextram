@@ -11,10 +11,6 @@ def get_one_way_txt():
                 match = message['text']
                 matches.append(match)
                 words+=len(match)
-            if message["from"] != target_username:
-                print("[!] No username matchs.")
-                break
-            
         except:
             continue
 
@@ -67,8 +63,10 @@ if __name__== "__main__":
     json_data_obj = open(args.file, 'r')
     target_username = args.username
     output_file = args.out_file
-
-    json_to_python_obj = json.load(json_data_obj)
+    try:
+        json_to_python_obj = json.load(json_data_obj)
+    except:
+        print("somthing wrong with the json file!")
 
 
 banner = """
